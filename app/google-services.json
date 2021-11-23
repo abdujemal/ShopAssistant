@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1087140592908",
+    "project_id": "shopassistant-bb54f",
+    "storage_bucket": "shopassistant-bb54f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087140592908:android:52bfc36ff36b100b80dd29",
+        "android_client_info": {
+          "package_name": "com.ajtech.shopassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087140592908-m4qcurmcicpkeu5e1mbk8a0to89sm2m7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkzQKCo9qHW4WmkHdruYvoao3kZwJYajg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087140592908-m4qcurmcicpkeu5e1mbk8a0to89sm2m7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
