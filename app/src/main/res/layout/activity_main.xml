@@ -11,7 +11,7 @@
         android:id="@+id/go_to_nav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to nav"
+        android:text="Start"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         />

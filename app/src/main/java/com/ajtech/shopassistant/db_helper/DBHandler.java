@@ -1,8 +1,13 @@
 package com.ajtech.shopassistant.db_helper;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.ajtech.shopassistant.Models.Product;
+
+import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -80,6 +85,69 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // at last we are closing our
         // database after adding database.
+        db.close();
+    }
+
+    // below is the method for deleting our course.
+    public void deleteProduct(String productId) {
+
+        // on below line we are creating
+        // a variable to write our database.
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // on below line we are calling a method to delete our
+        // course and we are comparing it with our course name.
+        db.delete(TABLE_NAME, "id=?", new String[]{productId});
+        db.close();
+    }
+
+    public ArrayList<Product> readProducts() {
+        // on below line we are creating a
+        // database for reading our database.
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // on below line we are creating a cursor with query to read data from database.
+        Cursor cursorCourses = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        // on below line we are creating a new array list.
+        ArrayList<Product> productList = new ArrayList<>();
+
+        // moving our cursor to first position.
+        if (cursorCourses.moveToFirst()) {
+            do {
+                // on below line we are adding the data from cursor to our array list.
+                productList.add(new Product(
+                        cursorCourses.getString(0),
+                        cursorCourses.getString(1),
+                        cursorCourses.getString(3),
+                        cursorCourses.getString(4),
+                        cursorCourses.getString(2)));
+            } while (cursorCourses.moveToNext());
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        cursorCourses.close();
+        return productList;
+    }
+
+    // below is the method for updating our courses
+    public void updateProduct(String id, String productName, String productDesc, String productCategory, String productPosition) {
+
+        // calling a method to get writable database.
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        // on below line we are passing all values
+        // along with its key and value pair.
+        values.put(NAME_COL, productName);
+        values.put(DESCRIPTION_COL, productDesc);
+        values.put(CATEGORY_COL, productCategory);
+        values.put(POSITION_COL, productPosition);
+
+        // on below line we are calling a update method to update our database and passing our values.
+        // and we are comparing it with name of our course which is stored in original name variable.
+        db.update(TABLE_NAME, values, "id=?", new String[]{id});
         db.close();
     }
 
