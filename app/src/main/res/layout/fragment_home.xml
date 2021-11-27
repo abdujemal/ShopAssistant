@@ -33,7 +33,7 @@
                    android:layout_height="wrap_content"
                    android:layout_weight="8"
                    android:inputType="text"
-                   android:hint="Search..."
+                   android:hint="@string/search"
                    android:layout_gravity="center"
 
                    />
